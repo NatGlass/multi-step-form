@@ -1,6 +1,14 @@
+import Container from "./components/Container"
+import Sidebar from "./components/Sidebar"
+import Steps from "./components/Steps"
+
 const App = () => {
   return (
-    <div className="text-4xl">App</div>
+    <Container>
+      <Sidebar>
+        <Steps />
+      </Sidebar>
+    </Container>
   )
 }
 

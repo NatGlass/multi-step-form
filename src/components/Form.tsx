@@ -1,6 +1,18 @@
-import React from 'react'
+import { useState } from "react";
 
-const Form = () => {
+const Form = ({activeStep, setActiveStep}: {activeStep: number, setActiveStep}) => {
+  const increment = () => {
+    if (activeStep < 4) {
+      setActiveStep(activeStep + 1)
+    } else {
+      return;
+    }
+  }
+
+  const decrement = () => {
+    setActiveStep(activeStep - 1)
+  } 
+
   return (
     <div className="pt-10">
         <h1 className="text-3xl font-bold text-marine-blue pb-[11px]">Personal info</h1>
@@ -13,8 +25,9 @@ const Form = () => {
             <label className="pb-2 pt-6 text-marine-blue">Phone Number</label>
             <input type="text" placeholder="e.g. +1 234 567 890" className="border rounded-lg p-2" />
         </form>
-        <div className="text-right mt-24">
-            <button className="text-white bg-marine-blue py-3 px-5 rounded-lg">Next Step</button>
+        <div className="flex justify-between mt-24">
+          <button onClick={() => decrement()} className="text-cool-gray">{activeStep > 1 ? "Go Back" : null}</button>
+            <button onClick={() => increment()} className="text-white bg-marine-blue py-3 px-5 rounded-lg">Next Step</button>
         </div>
     </div>
   )

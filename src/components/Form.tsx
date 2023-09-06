@@ -42,6 +42,12 @@ const Form = ({
     setInputs((prevValues) => ({ ...prevValues, [name]: value }));
   };
 
+  const isValidForm = () => {
+    return (
+      inputs.name !== "" && inputs.email !== "" && inputs.phoneNumber !== ""
+    );
+  };
+
   return (
     <div className="pt-10">
       {activeStep === 1 && (
@@ -102,7 +108,9 @@ const Form = ({
         <button
           type="submit"
           onClick={() => increment()}
-          className="text-white bg-marine-blue py-3 px-5 rounded-lg"
+          title={!isValidForm() ? "Fill in the fields first" : ""}
+          disabled={!isValidForm()}
+          className="text-white bg-marine-blue py-3 px-5 rounded-lg disabled:opacity-80"
         >
           Next Step
         </button>
